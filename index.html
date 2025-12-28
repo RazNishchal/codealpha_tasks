@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>TaskMaster Pro | Adaptive Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="glass-container">
+      <header>
+        <h1>My Dashboard</h1>
+        <div class="stats-row">
+          <div class="stat-item pending">
+            Pending: <span id="p-count">0</span>
+          </div>
+          <div class="stat-item completed">
+            Completed: <span id="c-count">0</span>
+          </div>
+        </div>
+      </header>
+
+      <form id="todo-form">
+        <input
+          type="text"
+          id="todo-input"
+          placeholder="Add new task..."
+          required
+        />
+        <button type="submit">Add</button>
+      </form>
+
+      <div class="toolbar">
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="pending">Pending</button>
+          <button class="filter-btn" data-filter="completed">Completed</button>
+        </div>
+        <div class="tool-actions">
+          <button id="sort-btn" title="Sort A-Z">Sort A-Z ↓</button>
+          <button id="clear-all-trigger" class="danger-link">Clear All</button>
+        </div>
+      </div>
+
+      <ul id="todo-list"></ul>
+    </div>
+
+    <div id="edit-modal" class="modal">
+      <div class="modal-content">
+        <h3>Update Task</h3>
+        <div class="input-group">
+          <label>Task Description</label>
+          <input type="text" id="edit-text-input" />
+        </div>
+        <div class="input-group">
+          <label>Status</label>
+          <select id="edit-status-input">
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button onclick="closeModal()" class="btn-cancel">Cancel</button>
+          <button onclick="applyUpdate()" class="btn-update">Update</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="clear-modal" class="modal">
+      <div class="modal-content">
+        <h3 style="color: #ef4444">Clear All Tasks?</h3>
+        <p style="color: #64748b">
+          Are you sure you want to delete everything? This cannot be undone.
+        </p>
+        <div class="modal-footer">
+          <button onclick="closeClearModal()" class="btn-cancel">
+            No, Cancel
+          </button>
+          <button
+            onclick="confirmClearAll()"
+            class="btn-update"
+            style="background: #ef4444"
+          >
+            Yes, Clear All
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
